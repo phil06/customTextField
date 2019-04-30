@@ -65,6 +65,7 @@ public class CustomTextField: UIView {
                                    useAccessoryView: InputAccessoryViewType = .End, font: UIFont = UIFont.systemFont(ofSize: 14)) {
         self.textfield.inset = inset
         self.textfield.maxLength = maxInput
+        self.textfield.font = font
         
         if useAccessoryView != .End {
             self.setAccessoryViewType(type: useAccessoryView)
@@ -186,14 +187,15 @@ public class CustomTextField: UIView {
     }
 
     private func setAutoLayout() {
-        let imgHeight = self.iconImage.bounds.size.height + self.iconImageInset.top + self.iconImageInset.bottom
+        let imgHeight = self.iconImage.image != nil ? self.iconImage.bounds.size.height + self.iconImageInset.top + self.iconImageInset.bottom : 0
+        let imgWidth = self.iconImage.image != nil ? self.iconImage.bounds.size.width : 0
         let txtSize = self.textfield.bounds.size
         let additionalImgSizeWidth = self.additionalImage.image != nil ? self.additionalImage.bounds.size.width : 0
         
         let contentHeight = imgHeight > txtSize.height ? imgHeight : txtSize.height
         
         let metrics = [
-            "imgW": self.iconImage.bounds.size.width,
+            "imgW": imgWidth,
             "contentH": contentHeight,
             "imgInsetTop": self.iconImageInset.top,
             "imgInsetLeft": self.iconImageInset.left,
@@ -241,6 +243,11 @@ extension CustomTextField: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 extension CustomTextField: UITextFieldDelegate {
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        let field = textfield as TextFieldWithInset
+        field.textFieldDidEndEditing(textField)
+    }
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         accessoryViewDoneTapped()

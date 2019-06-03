@@ -14,13 +14,22 @@ txt1.setFontColor(color: UIColor.yellow)
 txt1.setPlaceholder(txt: "뭔가 입력하세여")
 ```
 
-  accessoryView.Default
-  이미지 넣기..
-  accessoryView.NextPrevious
-  이미지 넣기...
+  * ccessoryView.Default
+  ![001_accessoryView_default](./img/001_accessoryView_default.png)
+
+  * accessoryView.NextPrevious
+  ![001_accessoryView_nextPrev](./img/001_accessoryView_nextPrev.png)
   
-  done, next, prev 노티피케이션 정보 입력하기...
-  
+  * AccessoryView Notification
+  ```swift
+  extension Notification.Name {
+    //input accessory
+    static let CustomInputAccessoryDone = Notification.Name("CustomInputAccessoryDone")
+    static let CustomInputAccessoryNext = Notification.Name("CustomInputAccessoryNext")
+    static let CustomInputAccessoryPrev = Notification.Name("CustomInputAccessoryPrev")
+}
+  ```
+
   ## 왼쪽 아이콘 설정
   ```swift
   txt1.setIconLayout(img: UIImage(named: "icon")!, inset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 5))

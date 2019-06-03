@@ -74,8 +74,6 @@ public class CustomTextField: UIView {
         self.textfield.sizeToFit()
         
         setNeedsLayout()
-        
-        setAutoLayout()
     }
     
     public func setIconLayout(img: UIImage, inset: UIEdgeInsets) {
@@ -84,8 +82,6 @@ public class CustomTextField: UIView {
         self.iconImage.sizeToFit()
         
         setNeedsLayout()
-        
-        setAutoLayout()
     }
     
     public func setKeyboardType(type: UIKeyboardType) {
@@ -147,6 +143,18 @@ public class CustomTextField: UIView {
         }
     }
     
+    public func setDefaultPickerSelected(idx: Int = 0) {
+        guard inputPickerView != nil else {
+            return
+        }
+        
+        if pickerList.count - 1 < idx {
+            return
+        }
+        
+        inputPickerView.selectRow(idx, inComponent: 0, animated: true)
+        self.textfield.text = pickerList[inputPickerView.selectedRow(inComponent: 0)]
+    }
     
     public func usePickerView(listTitle: [String]) {
         inputPickerView = UIPickerView()
@@ -154,11 +162,11 @@ public class CustomTextField: UIView {
         self.textfield.inputView = inputPickerView
         inputPickerView.delegate = self
         inputPickerView.dataSource = self
+        self.textfield.clearButtonMode = .never
         
         pickerList = listTitle
         
         setNeedsLayout()
-        setAutoLayout()
     }
     
     public func setAdditionalIcon(img: UIImage, trailingInset: CGFloat) {
@@ -171,7 +179,6 @@ public class CustomTextField: UIView {
         self.additionalImage.addGestureRecognizer(gesture)
         
         setNeedsLayout()
-        setAutoLayout()
     }
     
     @objc private func activateTextField() {
@@ -185,8 +192,8 @@ public class CustomTextField: UIView {
     public func getText() -> String? {
         return self.textfield.text
     }
-
-    private func setAutoLayout() {
+    
+    public override func sizeToFit() {
         let imgHeight = self.iconImage.image != nil ? self.iconImage.bounds.size.height + self.iconImageInset.top + self.iconImageInset.bottom : 0
         let imgWidth = self.iconImage.image != nil ? self.iconImage.bounds.size.width : 0
         let txtSize = self.textfield.bounds.size
@@ -204,7 +211,7 @@ public class CustomTextField: UIView {
             "additionalImageW": additionalImgSizeWidth,
             "additionalImageInset": additionalImgSizeWidth > 0 ? additionalIconTrailingInset : 0
         ]
-
+        
         if let constraints = self.contentViewConstraints {
             NSLayoutConstraint.deactivate(constraints)
         }

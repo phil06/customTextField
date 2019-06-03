@@ -45,6 +45,11 @@ txt1.setPlaceholder(txt: "뭔가 입력하세여")
   txt1.setKeyboardType(type: UIKeyboardType.numberPad)
   ```
   
+  ## clearButton 설정
+  ```swift
+  txt1.setClearButton(mode: .never)
+  ```
+  
   ## border
   ```swift
   txt1.setTextFieldLine(edge: [.top, .bottom], color: UIColor.white, thickness: 1)
@@ -58,6 +63,12 @@ txt1.setPlaceholder(txt: "뭔가 입력하세여")
   pickerList.append("다다다다다")
   
   txt1.usePickerView(listTitle: pickerList)
+  
+  /*
+   기본적으로 선택될 항목 지정
+   idx : default 0
+  */
+  txt1.setDefaultPickerSelected(idx: 1)
   ```
   
   ### 선택된 pickerView 아이템 가져오기

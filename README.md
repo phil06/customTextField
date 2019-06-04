@@ -76,3 +76,5 @@ txt1.setPlaceholder(txt: "뭔가 입력하세여")
   let idx = txt1.inputPickerView.selectedRow(inComponent: 0)
   ```
   
+## CustomTextFieldDelegate
+### textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool

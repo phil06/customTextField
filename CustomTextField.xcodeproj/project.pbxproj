@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2D43312322A614390031FFA2 /* CustomTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43312222A614390031FFA2 /* CustomTextFieldDelegate.swift */; };
 		2DB7C91B2269A23C007E6162 /* CustomTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DB7C9192269A23C007E6162 /* CustomTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DB7C9322269A85B007E6162 /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB7C9312269A85B007E6162 /* CustomTextField.xib */; };
 		2DB7C9342269A871007E6162 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB7C9332269A871007E6162 /* CustomTextField.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D43312222A614390031FFA2 /* CustomTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldDelegate.swift; sourceTree = "<group>"; };
 		2DB7C9162269A23C007E6162 /* CustomTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DB7C9192269A23C007E6162 /* CustomTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		2DB7C91A2269A23C007E6162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				2DB7C91A2269A23C007E6162 /* Info.plist */,
 				2DB7C9312269A85B007E6162 /* CustomTextField.xib */,
 				2DB7C9332269A871007E6162 /* CustomTextField.swift */,
+				2D43312222A614390031FFA2 /* CustomTextFieldDelegate.swift */,
 				2DB7C9352269A94A007E6162 /* TextInputAccessoryView.swift */,
 				2DB7C9372269AA85007E6162 /* TextFieldWithInset.swift */,
 			);
@@ -185,6 +188,7 @@
 				2DB7C9382269AA85007E6162 /* TextFieldWithInset.swift in Sources */,
 				2DB7C9342269A871007E6162 /* CustomTextField.swift in Sources */,
 				2DB7C9362269A94A007E6162 /* TextInputAccessoryView.swift in Sources */,
+				2D43312322A614390031FFA2 /* CustomTextFieldDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

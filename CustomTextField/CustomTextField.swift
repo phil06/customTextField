@@ -22,6 +22,8 @@ public class CustomTextField: UIView {
     public var inputPickerView: UIPickerView!
     private var pickerList:[String] = []
     
+    public weak var delegate: CustomTextFieldDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -163,10 +165,16 @@ public class CustomTextField: UIView {
         inputPickerView.delegate = self
         inputPickerView.dataSource = self
         self.textfield.clearButtonMode = .never
+        inputPickerView.reloadInputViews()
         
         pickerList = listTitle
         
         setNeedsLayout()
+    }
+    
+    public func setPickerViewData(list: [String]) {
+        pickerList = list
+        inputPickerView.reloadAllComponents()
     }
     
     public func setAdditionalIcon(img: UIImage, trailingInset: CGFloat) {
@@ -183,6 +191,14 @@ public class CustomTextField: UIView {
     
     @objc private func activateTextField() {
         textfield.becomeFirstResponder()
+    }
+    
+    public override func resignFirstResponder() -> Bool {
+        if textfield.isFirstResponder {
+            textfield.resignFirstResponder()
+            return true
+        }
+        return false
     }
     
     public func setText(txt: String) {
@@ -258,6 +274,13 @@ extension CustomTextField: UITextFieldDelegate {
     
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         accessoryViewDoneTapped()
+        return true
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let result = delegate?.textField(textField, shouldChangeCharactersIn : range, replacementString: string) {
+            return result
+        }
         return true
     }
 
